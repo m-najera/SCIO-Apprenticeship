@@ -9,16 +9,16 @@ http.createServer((req, res) => {
   var path = url.parse(req.url, true).pathname;
   var resultado;
   if (path == '/suma') {
-    resultado = calculadora.suma(q.num1, q.num2);
+    resultado = calculadora.suma(q.n1, q.n2);
     res.write("<h1>SUMA</h1><h2>" + resultado + "</h2>");
   } else if (path == '/resta') {
-    resultado = calculadora.resta(q.num1, q.num2);
+    resultado = calculadora.resta(q.n1, q.n2);
     res.write("<h1>RESTA</h1><h2>" + resultado + "</h2>");
   } else if (path == '/division') {
-    resultado = calculadora.division(q.num1, q.num2);
+    resultado = calculadora.division(q.n1, q.n2);
     res.write("<h1>DIVISION</h1><h2>" + resultado + "</h2>");
   } else if (path == '/multiplicacion') {
-    resultado = calculadora.multiplicacion(q.num1, q.num2);
+    resultado = calculadora.multiplicacion(q.n1, q.n2);
     res.write("<h1>MULTIPLICACION</h1><h2>" + resultado + "</h2>");
   }
   res.end();
