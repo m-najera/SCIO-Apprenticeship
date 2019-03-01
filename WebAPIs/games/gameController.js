@@ -8,64 +8,55 @@ router.use(bodyParser.urlencoded({
 
 var Game = require('./game')
 var GAMES = [];
+GAMES.push(new Game( 'Transistor', 'Strategy'));
+GAMES.push(new Game( 'Age Of Empires II', 'RTS'));
+GAMES.push(new Game('The Legend of Zelda: Breath of the Wild', 'Adventure'));
+GAMES.push(new Game('The Binding of Isaac', 'RogueLike'));
 //CREATE a new user
 router.post('/', (req, res) => {
     var body = req.body;
-    if (!body.name || !body.email || !body.password) {
-        return res.status(400).send('Todo bad')
+    if (!body.name || !body.genre) {
+        return res.status(400).send('Bad format')
     }
-    var game = new Game(body.id, body.name, body.genre);
-    console.log(game)
-    GAMES.push();
-    //TODO save to db
+    var game = new Game(body.name, body.genre);
+    console.log(game);
+    GAMES.push(game);
     res.status(201).send('Game added');
 })
 
 router.get('/:id', (req, res) => {
-    if (req.params.id > 50) {
+    if (req.params.id > GAMES.length || req.params.id<=0) {
         return res.status(404).send('Game not found');
     }
-    //TODO get user db
-    var game = new Game('1', 'Transistor', 'Strategy');
-    res.status(200).send(game)
+    res.status(200).send(GAMES[req.params.id-1])
 })
 
 router.patch('/:id', (req, res) => {
     var body = req.body;
-    if (req.params.id > 50) {
-        return res.status(404).send('User not found');
+    if (req.params.id > GAMES.length || req.params.id <= 0) {
+        return res.status(404).send('Game not found');
     }
-    var user = new User('David', 'ldcruz@sciodev.com', 'A22222');
+    var game = GAMES[req.params.id];
     if (body.name) {
-        user.name = body.name;
+        game.name = body.name;
     }
-    if (body.email) {
-        user.email = body.email;
+    if (body.genre) {
+        game.genre = body.genre;
     }
-    if (body.password) {
-        user.password = body.password;
-    }
-    console.log(user)
-    res.status(200).send(user)
+    console.log(game)
+    res.status(200).send(game)
 })
 
-// router.delete('/:id', (req, res)=> {
-//     if(req.params.id > 999){
-//         return res.status(404).send('User not found');
-//     }
-//     var user = new User('David', 'ldcruz@sciodev.com', 'A22222');
-//     user = undefined
-//     res.status(200).send('User deleted')
-// })
+router.delete('/:id', (req, res)=> {
+    if(req.params.id > GAMES.length || req.params.id <= 0){
+        return res.status(404).send('Game not found');
+    }
+    GAMES[req.params.id] = new Game('deleted','deleted');
+    res.status(200).send('Game deleted')
+})
 
-// router.get('/', (req, res) => {
-//     var user1 = new User('Jonathan', 'jsanchez@sciodev.com', 'A33333');
-//     var user2 = new User('Tatiana', 'thernandez@sciodev.com', 'body.password');
-//     var users = [];
-//     users.push(user1);
-//     users.push(user2);
-//     //TODO save to db
-//     res.status(200).send(users);
-// })
+router.get('/', (req, res) => {
+    res.status(200).send(GAMES);
+})
 
 module.exports = router

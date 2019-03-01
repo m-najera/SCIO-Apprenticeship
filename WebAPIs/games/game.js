@@ -1,6 +1,5 @@
 class Game {
-    constructor(id, name , genre){
-        this.id = id;
+    constructor(name , genre){
         this.name = name;
         this.genre = genre;
     }
