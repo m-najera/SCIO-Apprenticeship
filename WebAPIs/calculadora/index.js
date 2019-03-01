@@ -10,16 +10,16 @@ http.createServer((req, res) => {
   var resultado;
   if (path == '/suma') {
     resultado = calculadora.suma(q.n1, q.n2);
-    res.write("<h1>SUMA</h1><h2>" + resultado + "</h2>");
+    res.write(resultado + "");
   } else if (path == '/resta') {
     resultado = calculadora.resta(q.n1, q.n2);
-    res.write("<h1>RESTA</h1><h2>" + resultado + "</h2>");
+    res.write(resultado + "");
   } else if (path == '/division') {
     resultado = calculadora.division(q.n1, q.n2);
-    res.write("<h1>DIVISION</h1><h2>" + resultado + "</h2>");
+    res.write(resultado + "");
   } else if (path == '/multiplicacion') {
     resultado = calculadora.multiplicacion(q.n1, q.n2);
-    res.write("<h1>MULTIPLICACION</h1><h2>" + resultado + "</h2>");
+    res.write(resultado + "");
   }
   res.end();
 }).listen(8080)
