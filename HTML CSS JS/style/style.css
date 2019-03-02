@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 100%;
+    display: flex;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #232323;
+    font-size: 2.4em;
+}
+
+nav ul li,
+ul li {
+    list-style-type: none;
+    margin: 0 4px 0 4px;
+    float: left;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+nav li * {
+    text-align: center;
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #EDEDED;
+}
+
+#units,
+.enemy {
+    width: auto;
+    text-align: center;
+    display: inline-flex;
+}
+
+.section {
+    margin: 10px;
+    width: auto;
+}
+
+.inputNumber {
+    margin: 5px;
+    display: block;
+    font-size: 1.2em;
+}
+
+.inputNumber input {
+    border-style: double;
+    width: 50%;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    font-size: 1.1em;
+}
+.about h1{
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+}
+.about h3{
+    margin-top: 0.8em;
+    margin-bottom: 0.2em;
+}
+li > a:hover{
+    color: #FFF;
+    transform: scale(1.02);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.element {
+    display: inline-block;
+    padding: 3px;
+}
+
+.element input {
+    -webkit-appearance: none;
+}
+
+input.E1:checked+label span {
+    background-color: tomato;
+}
+
+input.E2:checked+label span {
+    background-color: rgb(57, 121, 180);
+}
+
+input.E3:checked+label span {
+    background-color: rgb(255, 230, 0);
+}
+
+input.E4:checked+label span {
+    background-color: aqua;
+}
+
+input.E5:checked+label span {
+    background-color: green;
+}
+
+input.E6:checked+label span {
+    background-color: burlywood;
+}
+
+input.E7:checked+label span {
+    background-color: rgb(239, 252, 184);
+}
+
+input.E8:checked+label span {
+    background-color: rgb(92, 67, 99);
+}
+
+.align-center {
+    align-items: center;
+    text-align: center;
+}
+
+.draw {
+    background-color: rgb(176, 200, 245);
+}
+
+.winner {
+    background-color: rgb(130, 214, 130);
+    border-radius: 30px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background: 0 0 transparent no-repeat;
+    background-size: 256px;
+    top: 5px;
+    border-radius: 4px;
+    position: relative;
+    background-image: url(../img/elements_bn.png);
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.icon-active,
+input:checked+label span {
+    background-image: url(../img/elements.png);
+}
+
+input.button {
+    position: relative;
+    bottom: 80px;
+    -webkit-appearance: none;
+    border-style: none;
+    float: left;
+    color: #EDEDED;
+    background-color: #232323;
+    font-size: 1.8em;
+    width: 6em;
+    height: 2.2em;
+}
+
+.button:hover {
+    background-color: #343434;
+    transform: scale(1.05)
+}
+
+.icon-1 {
+    background-position: 0 0;
+}
+
+.icon-2 {
+    background-position: -32px 0;
+}
+
+.icon-3 {
+    background-position: -64px 0;
+}
+
+.icon-4 {
+    background-position: -96px 0;
+}
+
+.icon-5 {
+    background-position: -128px 0;
+}
+
+.icon-6 {
+    background-position: -160px 0;
+}
+
+.icon-7 {
+    background-position: -192px 0;
+}
+
+.icon-8 {
+    background-position: -224px 0;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+    border: 2px double rgb(57, 121, 180);
+}
+
+.bottom {
+    margin-left: 30px;
+}
+
+.bottom ul {
+    display: flex;
+    align-content: center;
+    width: 100%;
+}
+
+.preset{
+    width: 60px;
+    height: 60px;
+    display: block;
+    background-size: contain;
+}
+#preset1{
+    background-image: url(../img/glacial.png);
+}
+#preset2{
+    background-image: url(../img/elefik.png);
+}
+#preset3{
+    background-image: url(../img/omega.png);
+}
+#preset4{
+    background-image: url(../img/levia.png);
+}
+.preset:hover{
+    transform: scale(1.1);
+}
+
+@media only screen and (max-width: 800px) {
+    nav {
+        margin-bottom: 10px;
+    }
+    .inputNumber {
+        font-size: 1em;
+    }
+    .inputNumber input {
+        font-size: 1.1em;
+    }
+    h3 {
+        font-size: 1em;
+    }
+    h4 {
+        font-size: 0.9em;
+    }
+    label {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .inputNumber {
+        font-size: 0.8em;
+    }
+    .inputNumber input {
+        border-radius: 2px;
+        font-size: 1.1em;
+        width: 80%;
+    }
+    .icon {
+        top: -2px;
+    }
+    h3 {
+        font-size: 0.8em;
+    }
+    h4 {
+        font-size: 0.8em;
+    }
+    label {
+        font-size: 1em;
+    }
+}
