@@ -245,18 +245,7 @@ input[type="number"]:focus {
     display: block;
     background-size: contain;
 }
-#preset1{
-    background-image: url(../img/glacial.png);
-}
-#preset2{
-    background-image: url(../img/elefik.png);
-}
-#preset3{
-    background-image: url(../img/omega.png);
-}
-#preset4{
-    background-image: url(../img/levia.png);
-}
+
 .preset:hover{
     transform: scale(1.1);
 }

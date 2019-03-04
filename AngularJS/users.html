@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="appModuleAngular">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Userss</title>
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="./lib/angular.min.js"></script>
+  <script src="./lib/angular-local-storage.js"></script>
+  <script src="./moduleAngular.js"></script>
+  <script src="./controller/users.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li class="float-left"> <a href="index.html">FFBE DAMAGE COMPARATION</a> </li>
+        <li class="float-right"> <a href="about.html">About</a> </li>
+        <li class="float-right"> <a href="users.html">Users</a> </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div ng-controller="Users" ng-init="load()">
+    <ul>
+      <li ng-repeat="u in list">
+        <p>{{u.id}}</p>
+        <p>{{u.first_name}}</p>
+        <p>{{u.last_name}}</p>
+        <img src={{u.avatar}} alt="">
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

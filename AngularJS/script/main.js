@@ -83,15 +83,15 @@ const ELEFIK = [45, 0, 0, 0, 0, -50, 300, 0, 0];
 const OMEGA = [250, 10000, 10000, -300, 10000, 10000, 10000, 10000, 10000];
 const LEVIA = [250, 0, 0, -100, 10000, 0, 0, 0, 0];
 
-document.getElementById("preset1").addEventListener("click", x => {
-  loadPreset(GLACIAL);
-});
-document.getElementById("preset2").addEventListener("click", x => {
-  loadPreset(ELEFIK);
-});
-document.getElementById("preset3").addEventListener("click", x => {
-  loadPreset(OMEGA);
-});
-document.getElementById("preset4").addEventListener("click", x => {
-  loadPreset(LEVIA);
-});
+// document.getElementById("preset1").addEventListener("click", x => {
+//   loadPreset(GLACIAL);
+// });
+// document.getElementById("preset2").addEventListener("click", x => {
+//   loadPreset(ELEFIK);
+// });
+// document.getElementById("preset3").addEventListener("click", x => {
+//   loadPreset(OMEGA);
+// });
+// document.getElementById("preset4").addEventListener("click", x => {
+//   loadPreset(LEVIA);
+// });

@@ -1,244 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="appModuleAngular">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="./style/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="./lib/angular.min.js"></script>
+  <script src="./moduleAngular.js"></script>
+  <script src="./lib/angular-local-storage.js"></script>
+  <script src="./controller/calculator.js"></script>
+  <script src="./directives/backImage.js"></script>
+  <script src="./factory/dataTransfer.js"></script>
+  <script src="./filter/percentFilter.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li class="float-left"> <a href="index.html">FFBE DAMAGE COMPARATION</a> </li>
-                <li class="float-right"> <a href="about.html">About</a> </li>
-            </ul>
-        </nav>
-    </header>
-
+  <header>
+    <nav>
+      <ul>
+        <li class="float-left"> <a href="index.html">FFBE DAMAGE COMPARATION</a> </li>
+        <li class="float-right"> <a href="about.html">About</a> </li>
+        <li class="float-right"> <a href="users.html">Users</a> </li>
+      </ul>
+    </nav>
+  </header>
+  <div ng-controller="Calculator">
     <form id="form" action="">
-        <div id="units">
-            <div class="section" id="UNIT_A">
-                <h3>UNIT A</h3>
-                <p class="inputNumber">
-                    <label for="ATK1">ATK/MAG</label>
-                    <input id="ATK1" type="number" maxlength="5" value="100">
-                </p>
-                <p class="inputNumber">
-                    <label for="BONUS1">BONUS %</label>
-                    <input id="BONUS1" type="number" maxlength="5" value="0">
-                </p>
-                <h4>WEAPON ELEMENT(S)</h4>
-                <div class="element">
+      <div id="units">
+        <div class="section ng-class:unit1.class" id="UNIT_A">
+          <h3>UNIT A</h3>
+          <p class="inputNumber">
+            <label for="ATK1">ATK/MAG</label>
+            <input id="ATK1" type="number" ng-model="unit1.atk" ng-change="getResults()">
+          </p>
+          <p class="inputNumber">
+            <label for="BONUS1">BONUS %</label>
+            <input id="BONUS1" type="number" ng-model="unit1.bonus" ng-change="getResults()">
+          </p>
+          <h4>WEAPON ELEMENT(S)</h4>
+          <div class="element" ng-repeat="e in elements">
+            <input type="checkbox" ng-change="getResults()" ng-model='unit1.elements[$index]' id='{{"ELE1_"+($index+1)}}'
+              class='{{"E"+($index+1)}}' />
+            <label for='{{"ELE1_"+($index+1)}}'>
+              <span class='{{"icon icon-"+($index+1)}}'></span>
+            </label>
+          </div>
 
-                    <input type="checkbox" name="ELE1[]" id="ELE1_1" class="E1">
-                    <label for="ELE1_1">
-                        <span class="icon icon-1"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_2" class="E2">
-                    <label for="ELE1_2">
-                        <span class="icon icon-2"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_3" class="E3">
-                    <label for="ELE1_3">
-                        <span class="icon icon-3"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_4" class="E4">
-                    <label for="ELE1_4">
-                        <span class="icon icon-4"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_5" class="E5">
-                    <label for="ELE1_5">
-                        <span class="icon icon-5"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_6" class="E6">
-                    <label for="ELE1_6">
-                        <span class="icon icon-6"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_7" class="E7">
-                    <label for="ELE1_7">
-                        <span class="icon icon-7"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE1[]" id="ELE1_8" class="E8">
-                    <label for="ELE1_8">
-                        <span class="icon icon-8"></span>
-
-                    </label>
-                </div>
-                <h2>TOTAL:</h2>
-                <span id="TOTAL1"></span>
-            </div>
-            <div class="section" id="UNIT_B">
-                <h3>UNIT B</h3>
-                <p class="inputNumber">
-                    <label for="ATK2">ATK/MAG</label>
-                    <input id="ATK2" type="number" maxlength="5" value="100">
-                </p>
-                <p class="inputNumber">
-                    <label for="BONUS2">BONUS %</label>
-                    <input id="BONUS2" type="number" maxlength="5" value="0">
-                </p>
-                <h4>WEAPON ELEMENT(S)</h4>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_1" class="E1">
-                    <label for="ELE2_1">
-                        <span class="icon icon-1"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_2" class="E2">
-                    <label for="ELE2_2">
-                        <span class="icon icon-2"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_3" class="E3">
-                    <label for="ELE2_3">
-                        <span class="icon icon-3"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_4" class="E4">
-                    <label for="ELE2_4">
-                        <span class="icon icon-4"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_5" class="E5">
-                    <label for="ELE2_5">
-                        <span class="icon icon-5"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_6" class="E6">
-                    <label for="ELE2_6">
-                        <span class="icon icon-6"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_7" class="E7">
-                    <label for="ELE2_7">
-                        <span class="icon icon-7"></span>
-
-                    </label>
-                </div>
-                <div class="element">
-                    <input type="checkbox" name="ELE2[]" id="ELE2_8" class="E8">
-                    <label for="ELE2_8">
-                        <span class="icon icon-8"></span>
-
-                    </label>
-                </div>
-                <h2>TOTAL: </h2>
-                <span id="TOTAL2"></span>
-            </div>
-        </div>
-        <div class="enemy">
-            <div class="section">
-                <div class="align-center">
-                    <h3>ENEMY</h3>
-                    <p class="inputNumber">
-                        <label for="DEF">DEF/SPR</label>
-                        <input id="DEF" type="number" maxlength="5" value="1" min="1">
-                    </p>
-                    <h4>RESISTANCES</h4>
-                    <p class="inputNumber">
-                        <label for="RES1">
-                            <span class="icon icon-active icon-1"></span>
-                        </label>
-                        <input id="RES1" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES2">
-                            <span class="icon icon-active icon-2"></span>
-                        </label>
-                        <input id="RES2" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES3">
-                            <span class="icon icon-active icon-3"></span>
-                        </label>
-                        <input id="RES3" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES4">
-                            <span class="icon icon-active icon-4"></span>
-                        </label>
-                        <input id="RES4" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES5">
-                            <span class="icon icon-active icon-5"></span>
-                        </label>
-                        <input id="RES5" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES6">
-                            <span class="icon icon-active icon-6"></span>
-                        </label>
-                        <input id="RES6" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES7">
-                            <span class="icon icon-active icon-7"></span>
-                        </label>
-                        <input id="RES7" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                    <p class="inputNumber">
-                        <label for="RES8">
-                            <span class="icon icon-active icon-8"></span>
-                        </label>
-                        <input id="RES8" class="ENEMY_ELE" type="number" maxlength="5" value="0">
-                    </p>
-                </div>
-            </div>
+          <h2>TOTAL:</h2>
+          <span id="TOTAL1">{{unit1.total | number}}</span>
+          <h2>DIFFERENCE: </h2>
+          <span>{{unit1.diff | percent:0}}</span>
         </div>
 
+        <div class="section ng-class:unit2.class" id="UNIT_B">
+          <h3>UNIT B</h3>
+          <p class="inputNumber">
+            <label for="ATK2">ATK/MAG</label>
+            <input id="ATK2" ng-model="unit2.atk" ng-change="getResults()" type="number">
+          </p>
+          <p class="inputNumber">
+            <label for="BONUS2">BONUS %</label>
+            <input id="BONUS2" type="number" ng-model="unit2.bonus" ng-change="getResults()" value="0">
+          </p>
+          <h4>WEAPON ELEMENT(S)</h4>
+          <div class="element" ng-repeat="e in elements">
+            <input type="checkbox" ng-change="getResults()" ng-model='unit2.elements[$index]' id='{{"ELE2_"+($index+1)}}'
+              class='{{"E"+($index+1)}}' />
+            <label for='{{"ELE2_"+($index+1)}}'>
+              <span class='{{"icon icon-"+($index+1)}}'></span>
+            </label>
+          </div>
+          <h2>TOTAL: </h2>
+          <span id="TOTAL2">{{unit2.total | number}}</span>
+          <h2>DIFFERENCE: </h2>
+          <span>{{unit2.diff | percent:0}}</span>
+        </div>
+      </div>
+
+      <div class="enemy">
+        <div class="section">
+          <div class="align-center">
+            <h3>ENEMY</h3>
+            <p class="inputNumber">
+              <label for="DEF">DEF/SPR</label>
+              <input id="DEF" type="number" ng-model="enemy.def" ng-change="getResults()" value="1" min="1">
+            </p>
+            <h4>RESISTANCES</h4>
+
+            <p class="inputNumber" ng-repeat="s in enemyElements">
+              <label for='{{"RES"+($index+1)}}'>
+                <span class='{{"icon icon-active icon-"+($index+1)}}'></span>
+              </label>
+              <input id=RES{{$index+1}} ng-change="getResults()" class="ENEMY_ELE" type="number" ng-model=enemy.elements[$index]
+                value="0">
+            </p>
+          </div>
+        </div>
+      </div>
     </form>
     <div class="bottom">
-        <ul>
-            <input type="button" value="CALCULATE" class="button" onclick="calculate()">
-        </ul>
-        <ul id="presets">
-            <li><b>Presets</b></li>
-            <li><span class="preset" id="preset1"></span></li>
-            <li><span class="preset" id="preset2"></span></li>
-            <li><span class="preset" id="preset3"></span></li>
-            <li><span class="preset" id="preset4"></span></li>
-            <li><span></span></li>
-        </ul>
-        <script src="./script/main.js"></script>
+      <ul id="presets">
+        <li><b>Presets {{enemyCache}}</b></li>
+        <li ng-repeat="preset in listEnemyPresets">
+          <span bk-img={{preset.img}} alt={{preset.name}} ng-click="setPreset(preset)" class="preset">
+        </li>
+      </ul>
     </div>
+  </div>
 
 
 </body>
