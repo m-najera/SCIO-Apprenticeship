@@ -7,12 +7,16 @@ router.use(bodyParser.urlencoded({
 }))
 
 var Game = require('./game')
+//Simular Base de Datos
 var GAMES = [];
-GAMES.push(new Game( 'Transistor', 'Strategy'));
-GAMES.push(new Game( 'Age Of Empires II', 'RTS'));
+GAMES.push(new Game('Transistor', 'Strategy'));
+GAMES.push(new Game('Age Of Empires II', 'RTS'));
 GAMES.push(new Game('The Legend of Zelda: Breath of the Wild', 'Adventure'));
 GAMES.push(new Game('The Binding of Isaac', 'RogueLike'));
-//CREATE a new user
+GAMES.push(new Game('Final Fantasy IV', 'RPG'));
+GAMES.push(new Game('Persona 4', 'RPG'));
+GAMES.push(new Game('Xenoblade Chronicles', 'RPG'));
+
 router.post('/', (req, res) => {
     var body = req.body;
     if (!body.name || !body.genre) {
