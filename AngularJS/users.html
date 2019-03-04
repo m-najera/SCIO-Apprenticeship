@@ -24,16 +24,19 @@
     </nav>
   </header>
 
-  <div ng-controller="Users" ng-init="load()">
-    <ul>
+  <div ng-controller="Users" ng-init="load()" id="userList">
+    <ol>
       <li ng-repeat="u in list">
-        <p>{{u.id}}</p>
-        <p>{{u.first_name}}</p>
-        <p>{{u.last_name}}</p>
-        <img src={{u.avatar}} alt="">
+        <p>{{u.id}} - {{u.first_name}} {{u.last_name}}</p>
       </li>
-    </ul>
+    </ol>
+    <p>
+      <input type="text" ng-model="newUser.first_name">
+      <input type="text" ng-model="newUser.last_name">
+    </p>
+    <input type="button" ng-click="addUser()" value="Save">
   </div>
+
 
 </body>
 
