@@ -4,10 +4,10 @@ app.controller("Users", function ($scope, $http, localStorageService) {
   $scope.list = [];
   $scope.loadServer = () => {
     $http.get("https://reqres.in/api/users?page=4")
-      .then(function (data) {
+      .then(data => {
         $scope.list = data.data.data;
         $scope.id = 13;
-      }, function (error) {
+      }, error => {
         console("Error");
       });
   }

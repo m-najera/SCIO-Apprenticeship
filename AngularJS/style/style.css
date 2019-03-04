@@ -154,6 +154,7 @@ input.E8:checked+label span {
 
 .draw {
     background-color: rgb(176, 200, 245);
+    border-radius: 30px;
 }
 
 .winner {

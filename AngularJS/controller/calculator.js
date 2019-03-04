@@ -37,16 +37,14 @@ app.controller("Calculator", function ($scope, DataTransfer) {
       return;
     }
     if (u1.total > u2.total) {
-      u1.diff = (-1 + u1.total / u2.total)
-      u2.diff = -u1.diff;
       u1.class = "winner";
       u2.class = "";
     } else {
-      u2.diff = (-1 + u2.total / u1.total)
-      u1.diff = -u2.diff;
       u2.class = "winner";
       u1.class = "";
     }
+    u1.diff = (-1 + u1.total / u2.total)
+    u2.diff = (-1 + u2.total / u1.total)
   }
 
 
