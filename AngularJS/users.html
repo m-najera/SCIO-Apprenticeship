@@ -10,6 +10,7 @@
   <script src="./lib/angular.min.js"></script>
   <script src="./lib/angular-local-storage.js"></script>
   <script src="./moduleAngular.js"></script>
+  <script src="./lib/angular-local-storage.js"></script>
   <script src="./controller/users.js"></script>
 </head>
 
@@ -24,10 +25,20 @@
     </nav>
   </header>
 
-  <div ng-controller="Users" ng-init="load()" id="userList">
+  <div ng-controller="Users" id="userList">
+    <ol>
+      <li class="usersControlls">
+        <button ng-click="loadServer()">GET FROM SERVER</button>
+        <button ng-click="saveServer()">SAVE TO SERVER</button>
+        <button ng-click="loadLocal()">LOAD LOCAL</button>
+        <button ng-click="saveLocal()">SAVE LOCAL</button>
+      </li>
+    </ol>
     <ol>
       <li ng-repeat="u in list">
-        <p>{{u.id}} - {{u.first_name}} {{u.last_name}}</p>
+        <p>{{u.id}} - {{u.first_name}} {{u.last_name}}
+          <button ng-click="deleteUser($index)">Delete</button>
+        </p>
       </li>
     </ol>
     <p>
