@@ -4,7 +4,6 @@ class User {
         this.email = email;
         this.password = password;
     }
-
     toJson() {
         return {
             name: this.name,

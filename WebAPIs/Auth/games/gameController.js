@@ -6,18 +6,8 @@ var gameModel = require('../db/gameDBModel')
 router.use(bodyParser.urlencoded({
     extended: true
 }))
-
-var Game = require('./game')
 var verifyToken = require('../verifyToken')
-//Simular Base de Datos
-// var GAMES = [];
-// GAMES.push(new Game(1,'Transistor', 2014, 'Strategy'));
-// GAMES.push(new Game(2,'Age Of Empires II', 1999, 'RTS'));
-// GAMES.push(new Game(3,'The Legend of Zelda: Breath of the Wild', 2017, 'Adventure'));
-// GAMES.push(new Game(4,'The Binding of Isaac', 2011, 'RogueLike'));
-// GAMES.push(new Game(5,'Final Fantasy IV', 1991, 'RPG'));
-// GAMES.push(new Game(6,'Persona 4', 2008, 'RPG'));
-// GAMES.push(new Game(7,'Xenoblade Chronicles', 2010, 'RPG'));
+
 
 router.post('/', verifyToken, (req, res) => {
     var body = req.body;
@@ -39,9 +29,9 @@ router.post('/', verifyToken, (req, res) => {
 })
 
 router.get('/:id', verifyToken, (req, res) => {
-    var query = gameModel.findOne({"id": req.params.id});
-    query.exec((err, game)=>{
-        if(err || !game){
+    var query = gameModel.findOne({ "id": req.params.id });
+    query.exec((err, game) => {
+        if (err || !game) {
             return res.status(404).send('Game not found');
         }
         res.status(200).send(game)
@@ -60,9 +50,9 @@ router.patch('/:id', verifyToken, (req, res) => {
     if (body.genre) {
         updates.genre = body.genre;
     }
-    var query = gameModel.findOneAndUpdate({"id": req.params.id},updates,{new: true});
-    query.exec((err, game)=>{
-        if(err || !game){
+    var query = gameModel.findOneAndUpdate({ "id": req.params.id }, updates, { new: true });
+    query.exec((err, game) => {
+        if (err || !game) {
             return res.status(404).send('Game not found');
         }
         res.status(200).send(game)
@@ -70,20 +60,20 @@ router.patch('/:id', verifyToken, (req, res) => {
 })
 
 router.delete('/:id', verifyToken, (req, res) => {
-    var query = gameModel.findOneAndDelete({"id": req.params.id});
-    query.exec((err, game)=>{
-        if(err || !game){
+    var query = gameModel.findOneAndDelete({ "id": req.params.id });
+    query.exec((err, game) => {
+        if (err || !game) {
             return res.status(404).send('Game not found');
         }
         res.status(200).send('Game deleted')
     })
-    
+
 })
 
 router.get('/', verifyToken, (req, res) => {
     var query = gameModel.find().sort("id");
-    query.exec((err, games)=>{
-        if(err || !games){
+    query.exec((err, games) => {
+        if (err || !games) {
             return res.status(404).send('No Games');
         }
         res.status(200).send(games)
