@@ -1,0 +1,43 @@
+.bg-dark-50{
+    background-color: #343a40;
+    opacity: 0.90;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.carousel-item:hover{
+    transform: scale(1.1);
+}
+.card:hover{
+    transform: scale(1.02);
+}
+.card:hover>img{
+    transform: scale(1.02);
+}
+.card-img{
+    max-height: 180px;
+    width: auto
+}
+.card-img-overlay{
+    background-color: #343a4025
+}
+.card-img-overlay:hover{
+    transform: scale(1.02);
+    background-color: #343a4090
+}
+
+.card-img-long{
+    width: auto;
+    height: auto;
+    
+}
+
+body{
+    background-image: -webkit-radial-gradient(#f4f4f4, #bababa);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
